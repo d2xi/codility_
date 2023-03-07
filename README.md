@@ -3,12 +3,12 @@
 
 It aims to capture my solutions and insights gained from completing Codility Developer Training challenges.
 
-
 ## Tools and Technologies
-- The code is written in python
-- IDE: [VisualStudioCode](https://code.visualstudio.com/docs) in combination with Ubuntu destribution running on WSL2.
-- Package management tool: [miniconda](https://docs.conda.io/en/latest/miniconda.html)
-- Unitests: [pytest](https://docs.pytest.org/en/7.2.x/)
+
+- The code is written in Python.
+- IDE: [Visual Studio Code](https://code.visualstudio.com/docs)  in combination with the Ubuntu distribution running on WSL2.
+- Package management tool: [Miniconda](https://docs.conda.io/en/latest/miniconda.html).
+- Unit tests:  [pytest](https://docs.pytest.org/en/7.2.x/).
 
 ## FAQ
 
