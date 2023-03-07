@@ -148,4 +148,4 @@ dmypy.json
 .ionide
 
 ## Ignore any subfolder associated to VSC
-**/vscode
+**.vscode
