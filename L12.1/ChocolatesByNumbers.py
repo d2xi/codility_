@@ -10,13 +10,9 @@ def getNumberChocolatesEaten(totalNumChocolates, stepsToNextPos):
     Returns:
         int: The number of eaten chocolates.
     """
-    eatenCount = 0
-    wrappers = []
-    currPos = 0
-    while(True):
-        if (currPos not in wrappers):
-            eatenCount = eatenCount + 1
-            wrappers.append(currPos)
-        else:
-            return eatenCount
-        currPos = (currPos + stepsToNextPos) % totalNumChocolates
+    return totalNumChocolates // gcd(stepsToNextPos,totalNumChocolates)
+
+def gcd(a,b):
+    if(a%b==0):
+        return b
+    return gcd(b,a%b)
