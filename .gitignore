@@ -146,6 +146,3 @@ dmypy.json
 # Ignore all local history of files
 .history
 .ionide
-
-## Ignore any subfolder associated to VSC
-**.vscode
