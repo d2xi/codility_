@@ -1,6 +1,6 @@
 {
     "python.testing.pytestArgs": [
-        "L12.1", "L14.2"
+        "."
     ],
     "python.testing.unittestEnabled": false,
     "python.testing.pytestEnabled": true
