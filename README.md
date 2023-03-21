@@ -47,6 +47,18 @@ i = L/gcd(S, L)
 
 This value of i is guaranteed to be an integer and is also minimal, making it the smallest value of i that satisfies the condition (i*S) mod L = 0.
 
+## L12.2 CommonPrimeDivisors
+The task is to calculate the number of pairs that have the exact same set of prime factors by using either the greatest common divisor (gcd) or the least common multiple (lcm).
+
+The first thing to notice is that for the given two numbers, the gcd is the product of all common prime factors for the numbers taken with the smallest power. For example, for (2**2 * 3**11) and (2**4 * 3**2), the gcd is (2**2 * 3**2).
+
+The ideas is to "fully exclude" common factors out of the given numbers and then check if there is some uncommon part left. Devision enables us to exclude common minimum,, but there is potentially some rest left. Considert the example, a=(2**1 * 3**2) and b=(2**2 * 3**1), then the gcd(a,b)=(2**1 * 3**1), the devision by gcd(a,b) leaves us with ra=3 anb rb=2. Even if the given numbers have common set of prime factors, we cannot conclude that yet.
+
+To overcome this problem, we need to take an additional step and exclude the common factors between `rest`, the remainder of the division, and gcd(a,b) by finding the gcd(rest, g). We repeat this step until the remainder is 1, which means that gcd(a,b) has included all the factors that were part of the number, or until gcd(rest>1, g) is greater than 1, which means that the original number (a and/or b) contains some uncommon factors that were not present in gcd(a,b). This process must be done for both numbers.
+
+### Conclusion
+- The gcd is the product of common prime factors taken with the smallest power. 
+- To completely exclude common factors "hidden" in g=gcd(a,b), we need to use devision along with the gcd between the remainder of the division and g.
 
 ## L14.2  NailingPlanks
 ### Task
