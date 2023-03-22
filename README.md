@@ -9,6 +9,7 @@ It aims to capture my solutions and insights gained from completing Codility Dev
 - IDE: [Visual Studio Code](https://code.visualstudio.com/docs)  in combination with the Ubuntu distribution running on WSL2.
 - Package management tool: [Miniconda](https://docs.conda.io/en/latest/miniconda.html).
 - Unit tests:  [pytest](https://docs.pytest.org/en/7.2.x/).
+- [Mardown Tables generator](https://www.tablesgenerator.com/)
 
 ## FAQ
 
@@ -71,3 +72,27 @@ B) Use BS to find a nail that matches an interval and has the smallest position 
 
 ### Conclusion
 I implemented option B and achieved a score of 62%. However, one correctness test is still failing. I suspect that I may have missed something and do not fully understand the requirements(my unit tests are working fine).
+
+## L15.1 AbsDistinct
+### Task
+The goal is to apply the caterpillar method to find distinct absolute value in the given sorted list of integers.
+### Ideas and Solution
+The Caterpillar method (CM) enables traversal of absolute values in a given list from largest to smallest, ensuring that each value is visited exactly once. CM requires two pointers (integers), which I set to point to either end of the list. In each iteration step, exactly one decision is made: whether to count the value with the largest absolute value (which I call "current") or not, if it is a duplicate. Afterward, the pointer for the current value should be adjusted.
+
+The fact that each position is visited exactly once in descending order of absolute values means that dealing with duplicates requires only knowledge of the value of the previous "current" value.
+
+#### Example
+Given the list:  [-20,5,10,20,20]
+
+| itteration | 0    | 1  | 2   | 3   | 4  |
+|------------|------|----|-----|-----|----|
+| previous   | None | 20 | 20  | -20 | 10 |
+| current    | 20   | 20 | -20 | 10  | 5  |
+| counter    | +1   | +0 | +0  | +1  | +1 |
+
+Result: 3
+Notice, how the comparison between previous and current influences the counter. Also, the absolute values of current are ordered in descending order.
+
+### Conclusiion
+- The Caterpillar method is a technique that can be used to traverse a sorted list of integers in descending order of absolute value.
+- Each step can be abstracted as a pair of integers (a,b), where the biggest one is changed.
