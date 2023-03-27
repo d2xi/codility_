@@ -1,4 +1,11 @@
 # codility_
+
+| :warning: WARNING          |
+|:---------------------------|
+|Please note that the following repository contains solutions to coding challenges, and it is highly discouraged to copy these solutions without attempting to solve the problem on your own. Additionally, please be aware that following any links provided is done at your own risk.|
+
+
+
 ## What is the purpose of the project?
 
 It aims to capture my solutions and insights gained from completing Codility Developer Training challenges.
@@ -10,6 +17,7 @@ It aims to capture my solutions and insights gained from completing Codility Dev
 - Package management tool: [Miniconda](https://docs.conda.io/en/latest/miniconda.html).
 - Unit tests:  [pytest](https://docs.pytest.org/en/7.2.x/).
 - [Mardown Tables generator](https://www.tablesgenerator.com/)
+- [autopep8](https://github.com/hhatto/autopep8) for code autoformat. To read about reformating code in VSC read the [microsoft manual](https://learn.microsoft.com/en-us/visualstudio/python/formatting-python-code).
 
 ## FAQ
 
