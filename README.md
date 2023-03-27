@@ -1,4 +1,11 @@
 # codility_
+
+| :warning: WARNING          |
+|:---------------------------|
+|Please note that the following repository contains solutions to coding challenges, and it is highly discouraged to copy these solutions without attempting to solve the problem on your own. Additionally, please be aware that following any links provided is done at your own risk.|
+
+
+
 ## What is the purpose of the project?
 
 It aims to capture my solutions and insights gained from completing Codility Developer Training challenges.
@@ -9,27 +16,34 @@ It aims to capture my solutions and insights gained from completing Codility Dev
 - IDE: [Visual Studio Code](https://code.visualstudio.com/docs)  in combination with the Ubuntu distribution running on WSL2.
 - Package management tool: [Miniconda](https://docs.conda.io/en/latest/miniconda.html).
 - Unit tests:  [pytest](https://docs.pytest.org/en/7.2.x/).
-- [Mardown Tables generator](https://www.tablesgenerator.com/)
+- [Mardown Tables generator](https://www.tablesgenerator.com/).
+- [autopep8](https://github.com/hhatto/autopep8) for code autoformat. To read about reformating code in VSC read the [microsoft manual](https://learn.microsoft.com/en-us/visualstudio/python/formatting-python-code).
 
 ## FAQ
+<details>
+<summary>How to deal with the error message: "ModuleNotFoundError: No module named 'pytest'"? </summary>
 
-### How to deal with the error message: "ModuleNotFoundError: No module named 'pytest'"?
-In vscode "use the Python: Select Interpreter command from the Command Palette (Ctrl+Shift+P)" to activate interpereper of proper environements.
-
-For more information read the [vscode documentation](https://code.visualstudio.com/docs/python/environments).
-
-# Solutions
-## L12.1 ChocolatesByNumbers 
+In vscode "use the Python: Select Interpreter command from the Command Palette (Ctrl+Shift+P)" to activate interpereper of proper environements. For more information read the [vscode documentation](https://code.visualstudio.com/docs/python/environments).
+</details>
+  
+## Solutions
+<details>
+<summary>L12.1 ChocolatesByNumbers</summary>
+  
 ### Task
 A certain number of chocolates are arranged in a circle, and you start eating chocolates by taking specific steps around the circle. After each chocolate is eaten, it is replaced by a wrapper. You are asked to determine how many chocolates you can eat before you encounter the first wrapper by applying the Euclidean algorithm.
+  
 ### Ideas and Solution
 First thing to notice is the fact that the first wrapper encountered will be from the first eaten chocolate. Therefore, we aim to land in the start position.
 
 Second, for the given number of chocolates L and the step increment S, the next candidate chocolate to be eaten is given by the equation `(0 + i*S) mod L`, where `i` is the current turn. This gives us an equation to solve: `(0 + i*S) mod L = 0`, which simplifies to `i*S = k*L`, where k is a positive integer. Now, there are two important constraints: `i` must be an integer value, and it also must be minimal. The only factor we can control is `k`.
 
 We could set `k` to be equal to `S`, which would make `i` to be integer; However, it would be maximized. Instead, we aim to keep the denominator as large as possible. For that reason, assuming `S = s*gcd(S, L)`, we set `k = s`.  `i = (s*L)/(s*gcd(S, L))`, which leads to `i = L/gcd(S, L)` to be an integer and minimal.
+</details>
 
-## L12.2 CommonPrimeDivisors
+<details>
+<summary>L12.2 CommonPrimeDivisors</summary>
+  
 ### Task
 The task is to calculate the number of pairs that have the exact same set of prime factors by using either the greatest common divisor (gcd) or the least common multiple (lcm).
 ### Ideas and Solution
@@ -42,8 +56,11 @@ To overcome this problem, we need to take an additional step and exclude the com
 ### Conclusion
 - The gcd is the product of common prime factors taken with the smallest power. 
 - To completely exclude common factors "hidden" in `g=gcd(a,b)`, we need to use devision along with the gcd between the remainder of the division and g.
-
-## L14.2  NailingPlanks
+</details>
+  
+<details>
+<summary>L14.2 NailingPlanks</summary>
+  
 ### Task
 The task is to determine the minimum number of nails needed to mount all the given planks according to the provided nailing sequence. You are given two lists that specify the starting and ending positions of each plank, as well as a list that specifies the order in which the planks should be nailed.
 
@@ -54,8 +71,11 @@ B) Use BS to find a nail that matches an interval and has the smallest position 
 
 ### Conclusion
 - Solution B. Score: 62%. =(
-
-## L15.1 AbsDistinct
+</details>
+  
+<details>
+<summary>L15.1 AbsDistinct</summary>
+  
 ### Task
 The goal is to apply the caterpillar method to find distinct absolute value in the given sorted list of integers.
 ### Ideas and Solution
@@ -79,3 +99,4 @@ Notice, how the comparison between previous and current influences the counter. 
 ### Conclusion
 - The Caterpillar method is a technique that can be used to traverse a sorted list of integers in descending order of absolute value.
 - Each step can be abstracted as a pair of integers (a,b); In each step an integere with the biggest absolute value is changed.
+</details>
