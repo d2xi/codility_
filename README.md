@@ -108,6 +108,26 @@ Notice, how the comparison between previous and current influences the counter. 
 </details>
 
 <details>
+<summary>L15.3 CountTriangles</summary>
+
+### Task
+The goal is to use the caterpillar algorithm to find the number of triangles that can be constructed from a given list of integers.
+
+### Ideas and Solution
+To form a triangle, the sum of any two sides must be greater than the third side. This is known as the triangle inequality condition. To find all valid triplets (a, b, c), we need to explore all possible values for a, b, and c.
+
+We can determine the valid interval for b by combining the three triangle conditions into the expression abs(c - a) < b < c + a. If we limit the integers to 1 <= a <= b <= c, then the condition can be simplified to c - a < b < c + a. Since b is less than or equal to c, and a is at least 1, the condition b < a + c is always met. Therefore, we are left with the condition c - a < b.
+
+Now, we need to decide how to traverse a, b, and c and what initial values to select. To do this, we will keep b fixed and search for suitable values of a and c. There are two cases to consider:
+
+   1. If c - a >= b, then we can either increase a or decrease c. By setting c to be the minimum value, we only need to adjust a.
+
+   2. If c - a < b, then any value a', such a<=a'<=b, is suitable too. Thus, we set a to be the minimum value.
+
+By adopting this approach, we can explore all possible triplet values by fixing the middle value of b and adjusting the left and right parts of a and c.
+</details>
+
+<details>
 <summary>L16.1 MaxNonoverlappingSegments</summary>
   
 ### Task
