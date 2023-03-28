@@ -108,6 +108,16 @@ Notice, how the comparison between previous and current influences the counter. 
 </details>
 
 <details>
+<summary>L15.3 CountTriangles</summary>
+
+### Task
+The goal is to use the caterpillar algorithm to find the number of triangles that can be constructed from a given list of integers.
+
+### Ideas and Solution
+
+</details>
+
+<details>
 <summary>L16.1 MaxNonoverlappingSegments</summary>
   
 ### Task
