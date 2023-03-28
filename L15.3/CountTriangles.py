@@ -1,4 +1,13 @@
 def countTriangles(nums):
+    """
+    Calculates the number of triangles that can be constracted by using positions from the provided list.
+
+    Args:
+        nums (int list): List of integers >0, that may be empty.
+
+    Returns:
+        int: Number of triagles.
+    """
     beg = 0
     end = len(nums)-1
     sortedNums = sorted(nums)
@@ -11,7 +20,6 @@ def countTriangles(nums):
             if valC-valA < valB:
                 numTriangles += posB-posA
                 posC += 1
-                print(valA, valB, valC)
             else:
                 posA += 1
     return numTriangles
