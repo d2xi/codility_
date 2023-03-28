@@ -8,7 +8,7 @@
 
 ## What is the purpose of the project?
 
-It aims to capture my solutions and insights gained from completing Codility Developer Training challenges.
+It aims to capture my solutions and insights gained from completing [Codility Developer Training challenges](https://app.codility.com/programmers/lessons/).
 
 ## Tools and Technologies
 
@@ -17,7 +17,7 @@ It aims to capture my solutions and insights gained from completing Codility Dev
 - Package management tool: [Miniconda](https://docs.conda.io/en/latest/miniconda.html).
 - Unit tests:  [pytest](https://docs.pytest.org/en/7.2.x/).
 - [Mardown Tables generator](https://www.tablesgenerator.com/).
-- [autopep8](https://github.com/hhatto/autopep8) for code autoformat. To read about reformating code in VSC read the [microsoft manual](https://learn.microsoft.com/en-us/visualstudio/python/formatting-python-code).
+- Code autoformating: [autopep8](https://github.com/hhatto/autopep8). To read about reformating code in VSC refer to the [microsoft manual](https://learn.microsoft.com/en-us/visualstudio/python/formatting-python-code).
 
 ## FAQ
 <details>
@@ -25,7 +25,13 @@ It aims to capture my solutions and insights gained from completing Codility Dev
 
 In vscode "use the Python: Select Interpreter command from the Command Palette (Ctrl+Shift+P)" to activate interpereper of proper environements. For more information read the [vscode documentation](https://code.visualstudio.com/docs/python/environments).
 </details>
-  
+
+<details>
+<summary>"! [remote rejected] main -> main (failure) error: failed to push some refs to 'git@github.com:.git'"</summary>
+
+  [Check wheather GitHub services are available](https://www.githubstatus.com/).
+</details>
+
 ## Solutions
 <details>
 <summary>L12.1 ChocolatesByNumbers</summary>
@@ -99,4 +105,30 @@ Notice, how the comparison between previous and current influences the counter. 
 ### Conclusion
 - The Caterpillar method is a technique that can be used to traverse a sorted list of integers in descending order of absolute value.
 - Each step can be abstracted as a pair of integers (a,b); In each step an integere with the biggest absolute value is changed.
+</details>
+
+<details>
+<summary>L16.1 MaxNonoverlappingSegments</summary>
+  
+### Task
+  The goal is to apply a greedy method to find the maximum number of non-overlapping segments for a given set of segments sorted by their end positions. Each segment is represented by its beginning and end positions, which are provided in two separate lists - one for beginning positions and another for end positions.
+
+### Ideas and Solution
+  
+Observations:
+
+- There may be several sets that lead to an optimal solution, and some of them may not necessarily contain the first interval (Example 1).
+- Non-overlapping intervals are always a part of an optimal solution.
+- Any interval with index j > i that intersects with the interval with index i also intersects with intervals with index k such that j > k > i (Example 2).
+  
+Initially, I declined the idea of repeatedly picking the first non-overlapping segment from the list. However, after considering possible counterexamples, I realized that the approach might work. One concern was that it seemed to always pick the first given segment, which may not necessarily be part of an optimal solution.  
+  
+To investigate this further, I asked whether there is always at least one set leading to an optimal solution that includes the first segment. Although it is possible for other sets not to include the first segment and still lead to an optimal solution (Example 1), the answer to the question is "yes." Suppose that neither optimal solution includes the first segment, s0. We can still take any optimal solution {s10, s55, ...} and replace the first element s10 with s0 to obtain another optimal solution {s10, s55, ...} (Contradiction). This replacement is possible because s10 and s55 do not overlap, so s55 is also not overlapping with s0, because it begins later than s10 ends, which ends earlier than s0 does, so the begin of s55 lies later that the end of s0.
+  
+Given that the first segment in the problem is always part of some optimal solution, we can focus on selecting subsequent non-overlapping segments to construct an optimal solution. This reduces the problem to a subproblem containing only segments that do not overlap with the first segment.To solve this subproblem, we can use the replacement argument mentioned earlier. That is, we can take any optimal solution for the subproblem and construct a new optimal solution that includes the next first non-overlapping segment.By repeatedly applying this replacement argument, we can construct an optimal solution for the entire problem. 
+   
+### Examples
+1. [0,2][1,3][4,5]. Two optimal solutions: {[0,2],[4,5]} and {[1,3],[4,5]}
+2. [0,3][4,5][1,6]. The third segement intersects the first and the second segments.
+3. [0,6],[1,2],[3,4],[5,6]. Segments are ordered by there begins (wrong). Optimal solution does not include first segement.
 </details>
