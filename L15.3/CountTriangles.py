@@ -1,9 +1,9 @@
 def countTriangles(nums):
     """
-    Calculates the number of triangles that can be constracted by using positions from the provided list.
+    Calculates the number of triangles that can be constructed by using numbers from the provided list.
 
     Args:
-        nums (int list): List of integers >0, that may be empty.
+        nums (int list): List of integers >0, that may be empty or contain duplicates.
 
     Returns:
         int: Number of triagles.
