@@ -164,6 +164,39 @@ Now, we need to decide how to traverse a, b, and c and what initial values to se
 By adopting this approach, we can explore all possible triplet values by fixing the middle value of b and adjusting the left and right parts of a and c.
 </details>
 
+
+<details> 
+<summary>L15.4 MinAbsSumOfTwo</summary>
+
+### Task
+The goal is to use the caterpillar algorithm to find the smallest possible absolute value of the sum of any two elements from a given list of values.
+
+### Ideas and Solution
+The first step is to sort the given list of integers in ascending order. The head of the caterpillar points to the maximum value in the list (the last value) and the tail points to the minimum value (the first value). We only need to consider a pair of indexes once, without permutations.
+
+Let posT and posH be the indexes of the numbers in the given list, and valT and valH be their corresponding values. Also, let `sum` be defined as the sum of valT and valH.
+
+By looking at the matrix, one can notice that if the sum > 0 (e.g., (-10, 20)), then it is also minimal for any tail value, because valT <= valT' for posT < posT', so valT + valH < valT' + valH. Therefore we can ignore the value by moving posH one position back(exclude column).
+
+Also, if val < 0, then because valH + valT <= valH' + valT for posT < posT', so the val is the minimal value (row), and we can ignore the rest of the values by moving the posT one position forward(exclude row).
+
+If sum is zero, then we have found the smallest possible result.
+
+In each step we take the minimal value.
+
+### Example
+(tail, head)
+|         | **-10** | **-8** | **0** | **1** | **8** | **20** |
+|:-------:|:-------:|:------:|:-----:|:-----:|:-----:|:------:|
+| **-10** |   -20   |   -18  |  -10  |   -9  |   -2  |   10   |
+|  **-8** |    X    |   -16  |   -8  |   -7  |   0   |   12   |
+|  **0**  |    X    |    X   |   0   |   1   |   8   |   20   |
+|  **1**  |    X    |    X   |   X   |   2   |   9   |   21   |
+|  **8**  |    X    |    X   |   X   |   X   |   16  |   28   |
+|  **20** |    X    |    X   |   X   |   X   |   X   |   40   |
+
+</details>
+
 <details>
 <summary>L16.1 MaxNonoverlappingSegments</summary>
   
