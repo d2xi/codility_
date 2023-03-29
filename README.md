@@ -108,6 +108,43 @@ Notice, how the comparison between previous and current influences the counter. 
 </details>
 
 <details>
+
+<summary>L15.2 CountDistinctSlices</summary>
+
+### Task
+The objective is to use the caterpillar method to identify distinct slices, which are slices containing only unique numbers. A slice is defined as a pair of indices (a, b) where a < b.
+
+### Ideas and Solution
+
+To keep track of duplicates, a dictionary is used with numbers as keys and the index of their last encounter in the list as values. The dictionary is updated on each encounter. If the latest stored index for the current number is greater than the position of the current caterpillar head, then a duplicate value has been found.
+
+The caterpillar's tail and head start at the beginning of the list. As long as no duplicates are encountered, the head keeps expanding. On encountering a duplicate, the caterpillar's tail is set to the position immediately after the previous duplicate. This ensures that any slice containing both positions with the duplicate at the same time is excluded.
+
+To count the number of possible slices, we use an increment that is equal to the current interval length. This increment increases by one with each expansion step of the caterpillar (head movement). However, when duplicates are encountered (tail movement), the increment must be adjusted to take into account the new length of the caterpillar.
+
+### Example
+
+Below is an adjacency matrix M[i,j], representing slices, where each slice starts at index i and ends at index j.
+
+|    index   |   0   |  1  |  2 |  3 |   4   |  5  |  6 |
+|:----------:|:-----:|:---:|:--:|:--:|:-----:|:---:|:--:|
+| input list | **2** | _3_ |  4 |  5 | **2** | _3_ |  4 |
+|            |   T1  |     |    | H1 |       |     |    |
+|            |       |  T2 |    |    |   H2  |     |    |
+|            |       |     | T3 |    |       |     | H* |
+|  increment |   +1  |  +2 | +3 | +4 |   +4  |  +4 | +5 |
+|            |  j=0  |  1  |  2 |  3 |   4   |  5  |  6 |
+|     i=0    |   V   |  V  |  V |  V |   X   |  X  |  X |
+|      1     |   X   |  V  |  V |  V |   V   |  X  |  X |
+|      2     |   X   |  X  |  V |  V |   V   |  V  |  V |
+|      3     |   X   |  X  |  X |  V |   V   |  V  |  V |
+|      4     |   X   |  X  |  X |  X |   V   |  V  |  V |
+|      5     |   X   |  X  |  X |  X |   X   |  V  |  V |
+|      6     |   X   |  X  |  X |  X |   X   |  X  |  V |
+
+</details>
+
+<details> 
 <summary>L15.3 CountTriangles</summary>
 
 ### Task
