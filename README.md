@@ -18,6 +18,7 @@ It aims to capture my solutions and insights gained from completing [Codility De
 - Unit tests:  [pytest](https://docs.pytest.org/en/7.2.x/).
 - [Mardown Tables generator](https://www.tablesgenerator.com/).
 - Code autoformating: [autopep8](https://github.com/hhatto/autopep8). To read about reformating code in VSC refer to the [microsoft manual](https://learn.microsoft.com/en-us/visualstudio/python/formatting-python-code).
+- Python docstring generator: [autoDocstring](https://github.com/NilsJPWerner/autoDocstring)
 
 ## FAQ
 <details>
