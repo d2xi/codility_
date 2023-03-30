@@ -8,7 +8,7 @@ def getIndexOfDominator(nums):
         int: Index of dominator.
     """
     indexStack = []
-    moreThanHalve = len(nums)//2+1
+    moreThanHalf = len(nums)//2+1
     dominatorIndex = -1
     stackSize = 0
     stackTopVal = None
@@ -20,7 +20,7 @@ def getIndexOfDominator(nums):
             stackTopVal = currVal
         stackSize = len(indexStack)
 
-    if stackSize > 0 and countOccurence(stackTopVal, nums) >= moreThanHalve:
+    if stackSize > 0 and countOccurence(stackTopVal, nums) >= moreThanHalf:
         dominatorIndex = indexStack.pop()
 
     return dominatorIndex
