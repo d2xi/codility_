@@ -34,6 +34,21 @@ In vscode "use the Python: Select Interpreter command from the Command Palette (
 
 ## Solutions
 <details>
+<summary>L08.1 Dominator</summary>
+  
+### Task
+The task is to find the index of any occurrence of the dominator — a value that appears more than half the time in the given list.
+
+### Ideas and Solution
+To find the dominator, we remove any pairs of distinct values from the list. We will be left with a candidate for the dominator. This is because we can only remove at most half of the values, whereas the dominator appears more than half of the time. We use a stack to store indexes. In the first step, we detect a candidate for the dominator. In the next step, we verify the candidate by counting its occurrences in the list.
+
+### Example
+1. [1,2,1] after removing pairs of distinct values we are left with value 1, because it appears 2 times it is a dominator.
+2. [1,2,3] we will be left with the value that is not a dominator.
+
+</details>
+
+<details>
 <summary>L12.1 ChocolatesByNumbers</summary>
   
 ### Task
