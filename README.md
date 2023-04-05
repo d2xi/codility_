@@ -238,3 +238,46 @@ Given that the first segment in the problem is always part of some optimal solut
 2. [0,3][4,5][1,6]. The third segement intersects the first and the second segments.
 3. [0,6],[1,2],[3,4],[5,6]. Segments are ordered by there begins (wrong). Optimal solution does not include first segement.
 </details>
+
+<details>
+<summary>L17.1 NumberSolitaire</summary>
+  
+### Task
+The task is to apply a technique of dynamic programming to calculate the maximum sum that can be obtained from a given list of numbers. The first and last numbers are always included in the sum, and some numbers in between may be skipped, as long as the distance between the last picked number and the next picked number is never more than six.
+
+### Ideas and Solution
+We start by picking the first number in the given list. Our goal is to reach the other side of the given list by picking numbers from the list. We may skip some numbers in between if they would decrease the current sum (e.g. negative numbers), as long as the last picked number is no more than six positions away from the previously picked number.
+
+However, this constraint may leave us with candidates that worsen the current result. To address this, we pick the best option out of the worst cases. Although it may seem that in some cases picking a suboptimal result could lead to a better overall result, committing to a greedy choice is actually the best approach for this problem. If picking the worst result would provide us with a better opportunity later, then that opportunity is either already reachable or can be reached later with our greedy choice.
+  
+
+  Now, we change the perspective from "what to pick next" to "what is the best result if the current number would be picked". For each number in the input list we store the best sum among previous reacheable positions(six) plus the current value - the max sum for the current number. If we sequentialy ittereate numbers one by one we only need to store results. A stack is a perfect datastructure for that. After the last itteration the top of the stack will storr the best possible sum if the last number would be pick(it also must be picked), hence overal best sum.
+  
+Now, let's shift our perspective from "what to pick next" to "what the best result would be if we picked the current number". For each number in the input list, we will store the best sum among previously reachable positions (up to six positions back) plus the current value. If we sequentially iterate through the numbers, a stack of size six is a perfect data structure for this purpose. After the last iteration, the top of the stack will store the best possible sum if the last number is picked (which it must be), resulting in the overall best sum. With this approach, we can efficiently find the optimal solution to the problem without having to consider all possible combinations of numbers.  
+
+### Examples
+Example 1
+|  itter  | init |   0   |    1   |   2   |    3   |    4   |    5   |
+|:-------:|:----:|:-----:|:------:|:-----:|:------:|:------:|:------:|
+| numList |      | **1** | **-2** | **0** |  **9** | **-1** | **-2** |
+|  maxSum |   0  |   1   |    1   |   1   |   10   |   10   |   10   |
+|  top->  |  min | **1** |    0   |   1   | **10** |    9   |    8   |
+|         |  min |  min  |  **1** |   0   |    1   | **10** |    9   |
+|         |  min |  min  |   min  | **1** |    3   |    1   | **10** |
+|         |  min |  min  |   min  |  min  |    1   |    0   |    1   |
+|         |  min |  min  |   min  |  min  |   min  |    1   |    0   |
+|  bot->  |  min |  min  |   min  |  min  |   min  |   min  |    1   |
+  
+Example 2
+|  itter  | init|   0   |    1   |    2   |    3   |    4   |    5   |    6   |    7    |
+|:-------:|:---:|:-----:|:------:|:------:|:------:|:------:|:------:|:------:|:-------:|
+| numList |     | **0** | **-4** | **-5** | **-2** | **-7** | **-9** | **-3** | **-10** |
+|  maxSum |  0  |   0   |    0   |    0   |    0   |    0   |    0   |   -2   |    -2   |
+|  top->  | min | **0** |   -4   |   -5   |   -2   |   -7   |   -9   |   -5   |   -12   |
+|         | min |  min  |  **0** |   -4   |   -5   |   -2   |   -7   |   -9   |    -5   |
+|         | min |  min  |   min  |  **0** |   -4   |   -5   |   -2   |   -7   |    -9   |
+|         | min |  min  |   min  |   min  |  **0** |   -4   |   -5   | **-2** |    -7   |
+|         | min |  min  |   min  |   min  |   min  |  **0** |   -4   |   -5   |  **-2** |
+|  bot->  | min |  min  |   min  |   min  |   min  |   min  |  **0** |   -4   |    -5   |
+
+</details>
